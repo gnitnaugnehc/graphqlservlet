@@ -1,0 +1,30 @@
+type Task {
+  id: ID!
+  name: String!
+  description: String
+  status: String
+  created_at: String
+  updated_at: String
+  assignedUsers: [User!]!
+}
+
+type User {
+  id: ID!
+  username: String!
+  assignedTasks: [Task!]!
+}
+
+type Query {
+  task(id: ID!): Task
+  user(id: ID!): User
+}
+
+type Mutation {
+  createTask(name: String!, description: String, status: String): Task
+  updateTask(id: ID!, name: String, description: String, status: String): Task
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
